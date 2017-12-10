@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>GHreport</title>
+<meta charset="UTF-8" />
+<!-- provide the links to all static resources here : links to csss and javascript files-->
+   <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link href="css/login.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="login-wrap">
+			<img src="images/logo.jpg"">
+			<form role="form" class="form-horizontal" method="post">
+				<div class="form-group">
+					<label for="email" class="col-sm-3 control-label">Email</label>
+
+					<div class="col-sm-12">
+						<input type="email" class="form-control" id="email"
+							placeholder="example.gmail.com" required>
+					</div>
+					<div>
+						<span></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="col-sm-3 control-label">Password</label>
+
+					<div class="col-sm-12">
+						<input type="password" name="password" id="password"
+							class="form-control" required>
+					</div>
+					<div>
+						<span></span>
+					</div>
+				</div>
+                <button onclick="add(document.getElementById('email').value,document.getElementById('password').value)" 
+                class="btn btn-primary col-sm-3 col-sm-offset-5">Log in</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
