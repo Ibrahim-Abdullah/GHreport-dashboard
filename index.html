@@ -34,10 +34,27 @@
 						<span></span>
 					</div>
 				</div>
-                <button onclick="add(document.getElementById('email').value,document.getElementById('password').value)" 
+                <button onclick="signUp(document.getElementById('email').value,document.getElementById('password').value)" 
                 class="btn btn-primary col-sm-3 col-sm-offset-5">Log in</button>
 			</form>
 		</div>
 	</div>
+<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase-storage.js">
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyColmH6hzWTA4awgNmv1cVYEAfp3qswJYs",
+    authDomain: "ghanareport-8f09e.firebaseapp.com",
+    databaseURL: "https://ghanareport-8f09e.firebaseio.com",
+    projectId: "ghanareport-8f09e",
+    storageBucket: "ghanareport-8f09e.appspot.com",
+    messagingSenderId: "629066523099"
+  };
+  firebase.initializeApp(config);
+</script>
 </body>
 </html>
