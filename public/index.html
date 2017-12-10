@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>GHreport</title>
+    <meta charset="UTF-8" />
+    <!-- provide the links to all static resources here : links to csss and javascript files-->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+</head>
+
+<body>
+    <img src="images/logo.jpg" style="align-content: center;height: 100px;width: 100px;">
+    <div id="firebaseui-auth-container"></div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+<script>
+var config = {
+    apiKey: "AIzaSyColmH6hzWTA4awgNmv1cVYEAfp3qswJYs",
+    authDomain: "ghanareport-8f09e.firebaseapp.com",
+    databaseURL: "https://ghanareport-8f09e.firebaseio.com",
+    projectId: "ghanareport-8f09e",
+    storageBucket: "ghanareport-8f09e.appspot.com",
+    messagingSenderId: "629066523099"
+};
+firebase.initializeApp(config);
+</script>
+<script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+<script type="text/javascript">
+// FirebaseUI config.
+var uiConfig = {
+    signInSuccessUrl: 'dashboard.html',
+    signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        firebase.auth.PhoneAuthProvider.PROVIDER_ID
+    ],
+    // Terms of service url.
+    tosUrl: 'https://www.google.com/+/policy/tos-custom-url.html'
+};
+
+// Initialize the FirebaseUI Widget using Firebase.
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', uiConfig);
+</script>
+
+</html>

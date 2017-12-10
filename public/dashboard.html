@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <title>GHreport</title>
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/sidebar-nav.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script type="text/javascript">
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyColmH6hzWTA4awgNmv1cVYEAfp3qswJYs",
+        authDomain: "ghanareport-8f09e.firebaseapp.com",
+        databaseURL: "https://ghanareport-8f09e.firebaseio.com",
+        projectId: "ghanareport-8f09e",
+        storageBucket: "ghanareport-8f09e.appspot.com",
+        messagingSenderId: "629066523099"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <script type="text/javascript">
+    initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                var displayName = user.displayName;
+                var email = user.email;
+                var photoURL = user.photoURL;
+                var uid = user.uid;
+                var phoneNumber = user.phoneNumber;
+                var providerData = user.providerData;
+                user.getIdToken().then(function(accessToken) {
+                    document.getElementById('username').textContent = displayName;
+                });
+            }
+        }, function(error) {
+            console.log(error);
+        });
+    };
+    window.addEventListener('load', function() {
+        initApp()
+    });
+    </script>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body class="fix-header">
+    <nav class="navbar navbar-default navbar-static-top m-b-0">
+        <div class="navbar-header">
+            <div class="top-left-part">
+                <!-- Logo -->
+                <a class="logo" href="dashboard.html">
+                    <!-- Logo icon image, you can use font-icon also --><b>
+                        <!--This is dark logo icon--><img src="images/logo.jpg" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="images/logo.jpg" alt="home" class="light-logo"  />
+                     </b></a>
+            </div>
+            <!-- /Logo -->
+            <ul class="nav navbar-top-links navbar-right pull-right">
+                <li>
+                    <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
+                        <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
+                </li>
+                <li>
+                    <a class="profile-pic" href="profile.html" id="username"> <img id="userprofilepic" src="images/logo.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">username</b></a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-header -->
+        <!-- /.navbar-top-links -->
+        <!-- /.navbar-static-side -->
+    </nav>
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav slimscrollsidebar">
+            <div class="sidebar-head">
+                <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span></h3>
+            </div>
+            <ul class="nav" id="side-menu">
+                <li style="padding: 250px 0 0;">
+                    <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
+                </li>
+                <li>
+                    <a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Reported Issues</a>
+                </li>
+                <li>
+                    <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Dashboard</h4> </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-xs-12">
+                    <div class="white-box analytics-info">
+                        <h3 class="box-title">Number of reported issues</h3>
+                        <ul class="list-inline">
+                            <li class="text-center"><span class="counter text-success">100</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-xs-12">
+                    <div class="white-box analytics-info">
+                        <h3 class="box-title">Current reported issues</h3>
+                        <ul class="list-inline">
+                            <li class="text-center"><span class="counter text-info">100</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="white-box">
+                        <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
+                            <select class="form-control pull-right row b-none">
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <h3 class="box-title">Reported Issues</h3>
+                        <div class="table-responsive">
+                            <table class="table" id="reportedIssues">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Issue Report</th>
+                                        <th>Image Filename[Click]</th>
+                                        <th>Location</th>
+                                        <th>[latitude,longitude]</th>
+                                        <th>Date & Time</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <script>
+                            var database = firebase.database();
+                            database.ref("posts").once('value', function(snapshot) {
+                                if (snapshot.exists()) {
+                                    var content = '';
+                                    snapshot.forEach(function(data) {
+                                        var val = data.val();
+                                        content += '<tbody>';
+                                        content += '<td>' + val.title + '</td>';
+                                        content += '<td>' + val.issue + '</td>';
+                                        content += '<td><a href='+val.downlableUri+'>' + val.filename + '</a></td>';
+                                        content += '<td>' + val.filename + '</td>';
+                                        content += '<td>' + val.latitude+','+val.longitude+ '</td>';
+                                        content += '</tbody>';
+                                    });
+                                    $('#reportedIssues').append(content);
+                                }
+                            });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2017 &copy; GHreport</footer>
+    </div>
+    </div>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
