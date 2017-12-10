@@ -1,131 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>GHreport</title>
+<meta charset="UTF-8">
+<title>GHreport</title>
+<meta charset="UTF-8" />
+<!-- provide the links to all static resources here : links to csss and javascript files-->
+   <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link href="css/login.css" rel="stylesheet">
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+    <script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        signInSuccessUrl: '<dashboard.html>',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+          firebase.auth.GithubAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          firebase.auth.PhoneAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: '<your-tos-url>'
+      };
 
-    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/colors/default.css" id="theme" rel="stylesheet">
-
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
 </head>
+<body>
+<!--    <div class="container">
+        <div class="login-wrap">
+            <img src="images/logo.jpg"">
+            <form role="form" class="form-horizontal" method="post">
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email</label>
 
-<body class="fix-header">
-    <div id="wrapper">
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav">
-                <div class="sidebar-head">
-                    <h3><span class="hide-menu">GHrport</span></h3>
+                    <div class="col-sm-12">
+                        <input type="email" class="form-control" id="email"
+                            placeholder="example.gmail.com" required>
+                    </div>
+                    <div>
+                        <span></span>
+                    </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password</label>
+
+                    <div class="col-sm-12">
+                        <input type="password" name="password" id="password"
+                            class="form-control" required>
+                    </div>
+                    <div>
+                        <span></span>
+                    </div>
+                </div>
+                <button onclick="signUp(document.getElementById('email').value,document.getElementById('password').value)" 
+                class="btn btn-primary col-sm-3 col-sm-offset-5">Log in</button>
+            </form>
         </div>
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row bg-title">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Dashboard</h4> </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Total reported Issues</h3>
-                            <ul class="list-inline">
-                                <li class="text-center"><span class="counter text-success">100</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Number of Current Month reported Issues</h3>
-                            <ul class="list-inline">
-                                <li class="text-center"><span class="counter text-info">100</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12">
-                        <div class="white-box">
-                            <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
-                                <select class="form-control pull-right row b-none">
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
-                                </select>
-                            </div>
-                            <h3 class="box-title">Reported Issues</h3>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Title</th>
-                                            <th>Issue Report</th>
-                                            <th>Image Link</th>
-                                            <th>Location name</th>
-                                            <th>Location[latitude,longitude]</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php  
-                                            $ussd = new ApplicationFunctions();
-                                            $transactions = $ussd->getTransactions();
-                                            //print_r($transactions);
-                                            //var_dump($transactions);
-                                            //echo $transactions['id'];
-                                            //var_dump($transactions['id']);
-                                            $i = 1;
-                                            if($transactions != null){
-                                                foreach ($transactions as $record) {
-                                                    echo '<tr><td>'.$i.'</td>
-                                                        <td class="txt-oflo">'.$record["sender_msisdn"].'</td>
-                                                        <td class="txt-oflo">'.$record["recipient_msisdn"].'</td>
-                                                        <td class="txt-oflo">'.$record['amount'].'</td>
-                                                        <td class="txt-oflo">'.$record['timestamp'].'</td>
-                                                        <td class="txt-oflo">'.$record['transactionID'].'</td>
-                                                        <td class="txt-oflo">'.$record['debit_status'].'</td>
-                                                        <td class="txt-oflo">'.$record['credit_status'].'</td></tr>';
-                                                        $i++;
-                                                }
-                                            }
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    <!-- /.col -->
-                </div>
-            </div>
-            <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2017 &copy; GHreport</footer>
-        </div>
-
     </div>
-    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
-</body>
-<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase-messaging.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase-storage.js">
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
 <script>
   // Initialize Firebase
   var config = {
@@ -137,5 +75,7 @@
     messagingSenderId: "629066523099"
   };
   firebase.initializeApp(config);
-</script>
+</script> -->
+<h1>GHreport</h1>
+</body>
 </html>
