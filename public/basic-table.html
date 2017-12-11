@@ -136,7 +136,7 @@
                             </table>
                             <script>
                             var database = firebase.database();
-                            database.ref("posts").once('value', function(snapshot) {
+                            database.ref("posts").on('value', function(snapshot) {
                                 if (snapshot.exists()) {
                                     var content = '';
                                     snapshot.forEach(function(data) {

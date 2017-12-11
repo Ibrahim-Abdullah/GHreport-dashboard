@@ -1,0 +1,41 @@
+[debug] [2017-12-10T23:43:28.371Z] ----------------------------------------------------------------------
+[debug] [2017-12-10T23:43:28.386Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Ibrahim-Abdullah\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-12-10T23:43:28.386Z] CLI Version:   3.16.0
+[debug] [2017-12-10T23:43:28.386Z] Platform:      win32
+[debug] [2017-12-10T23:43:28.386Z] Node Version:  v8.9.3
+[debug] [2017-12-10T23:43:28.386Z] Time:          Sun Dec 10 2017 15:43:28 GMT-0800 (Pacific Standard Time)
+[debug] [2017-12-10T23:43:28.386Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-10T23:43:28.433Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-10T23:43:28.433Z] > authorizing via signed-in user
+[debug] [2017-12-10T23:43:28.449Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-12-10T23:43:28.449Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/FPuyornt0JJTDgHOwh4v9qqoX64W49UbMj5aDrNaaM4',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Dec 10 2017 15:43:28 GMT-0800 (Pacific Standard Time)
+[debug] [2017-12-10T23:43:29.621Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-10T23:43:29.730Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ghanareport-8f09e  
+  
+ Sun Dec 10 2017 15:43:29 GMT-0800 (Pacific Standard Time)
+[debug] [2017-12-10T23:43:31.152Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-10T23:43:31.152Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/ghanareport-8f09e/tokens  
+  
+ Sun Dec 10 2017 15:43:31 GMT-0800 (Pacific Standard Time)
+[debug] [2017-12-10T23:43:32.043Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\Ibrahim-Abdullah\Documents\CODEBASE\ghreport'...
+[info] 
+[debug] [2017-12-10T23:43:32.058Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/ghanareport-8f09e  
+  
+ Sun Dec 10 2017 15:43:32 GMT-0800 (Pacific Standard Time)
+[debug] [2017-12-10T23:43:35.387Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-10T23:43:35.387Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/629066523099/clients/_:getWebAppConfig  
+  
+ Sun Dec 10 2017 15:43:35 GMT-0800 (Pacific Standard Time)
+[debug] [2017-12-10T23:43:36.808Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
+
